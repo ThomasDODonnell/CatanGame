@@ -1,3 +1,7 @@
 import { drawBoard } from "./board.js"
 
-const board = drawBoard();
+// const board = drawBoard();
+
+document.addEventLinstener('DOMContentLoaded', function(){
+    drawBoard();
+});

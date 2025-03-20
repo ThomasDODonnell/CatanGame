@@ -19,7 +19,7 @@ function getHexVerticies(r){
 function drawHex(verticies){
     let hex = document.createElementNS(svgNS, "polygon");
     hex.setAttribute("points", verticies);
-    hex.setAttribute("fill", "green");
+    hex.setAttribute("fill", '#7CFC00');
     hex.setAttribute("stroke", "black");
     hex.setAttribute("stroke-width", "2");
     return hex;
@@ -27,19 +27,19 @@ function drawHex(verticies){
 
 function drawBoard(){
     // Create mother SVG
-    const svg = document.createElementNS(svgNS, "svg");
+    const mother_svg = document.createElementNS(svgNS, "svg");
     mother_svg.setAttribute("width", "600");
     mother_svg.setAttribute("height", "600");
     mother_svg.setAttribute("viewBox", "0 0 600 600");
     document.body.appendChild(mother_svg);
 
     const container = document.getElementById('board-container');
-    container.appendChild(svg);
+    container.appendChild(mother_svg);
     
     let hex_verticies = getHexVerticies(10);
-    let hex = drawHex(verticies);
+    let hex = drawHex(hex_verticies);
 
-    document.appendChild(hex);
+    mother_svg.appendChild(hex);
 
 }
 
