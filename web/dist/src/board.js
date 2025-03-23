@@ -8,10 +8,14 @@ function getHexVerticies(r){
     // let verticies = []; // for when we do offsets we need tuples of ints
     let verticies = ""
     for (let i =0; i < 6; i++){
-        let x = Math.sin(((Math.pi * i)/3)) * r;
-        let y = Math.cos(((Math.pi * i)/3)) * r;
+        let x = Math.sin(((Math.PI * i)/3)) * r;
+        let y = Math.cos(((Math.PI * i)/3)) * r;
         // verticies.push([x, y]);
-        verticies += `${x}, ${y}`;
+        if (i === 0) {
+            vertices += `${x},${y}`;
+        } else {
+            vertices += ` ${x},${y}`;
+        }
     }
     return verticies;
 }
@@ -43,6 +47,8 @@ function drawBoard(){
 
 }
 
-document.addEventLinstener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function(){
     drawBoard();
 });
+
+export { drawBoard };
