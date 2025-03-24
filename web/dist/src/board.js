@@ -29,18 +29,51 @@ function drawHex(verticies){
     return hex;
 }
 
-function drawBoard(){
+function getHexSize(height, width){
+    if(height < width){
+        let r = (height*10)/16;
+        let road_scale = r/10;
+    }
+    let r = (height*10)/16;
+    let road_scale = r/10;
+    return r, road_scale
+}
+
+function positionHexes(hexes, height, width, r){
+    // const center = [width/2, height/2];
+    let y_offset = r/10;
+    let x_offset = r * Math.tan(Math.PI/6)
+
+    let centers = [];
+    
+    //middle virtical row
+    for(let i = 0; i < 6; i++){
+        let center = (i + 1) * y_offset + ((2*i) + 1) * r;
+        centers.push([center, center])
+    }
+
+    //middle horizontal row
+    for(let i = 0; i < 5; i++){
+        let center = (i + 1) * x_offset + ((2*i) + 1) * r;
+        centers.push([center, center])
+    }
+
+
+}
+
+function drawBoard(height, width){
     // Create mother SVG
     const mother_svg = document.createElementNS(svgNS, "svg");
-    mother_svg.setAttribute("width", "600");
-    mother_svg.setAttribute("height", "600");
-    mother_svg.setAttribute("viewBox", "0 0 600 600");
+    mother_svg.setAttribute("width", `${width}`);
+    mother_svg.setAttribute("height", `${height}`);
+    mother_svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
     document.body.appendChild(mother_svg);
 
     const container = document.getElementById('board-container');
     container.appendChild(mother_svg);
-    
-    let hex_verticies = getHexVerticies(50);
+
+    let r = getHexSize(height, width)
+    let hex_verticies = getHexVerticies(r);
     let hex = drawHex(hex_verticies);
 
     //position the hex
