@@ -6,15 +6,15 @@ function getHexVerticies(r){
     // r is the radius of the circle the hed is inscribed in
     // basically r is size
     // let verticies = []; // for when we do offsets we need tuples of ints
-    let verticies = ""
+    let verticies = "";
     for (let i =0; i < 6; i++){
         let x = Math.sin(((Math.PI * i)/3)) * r;
         let y = Math.cos(((Math.PI * i)/3)) * r;
         // verticies.push([x, y]);
         if (i === 0) {
-            vertices += `${x},${y}`;
+            verticies += `${x},${y}`;
         } else {
-            vertices += ` ${x},${y}`;
+            verticies += ` ${x},${y}`;
         }
     }
     return verticies;
@@ -40,15 +40,14 @@ function drawBoard(){
     const container = document.getElementById('board-container');
     container.appendChild(mother_svg);
     
-    let hex_verticies = getHexVerticies(10);
+    let hex_verticies = getHexVerticies(50);
     let hex = drawHex(hex_verticies);
+
+    //position the hex
+    hex.setAttribute("transform", "translate(300, 300)");
 
     mother_svg.appendChild(hex);
 
 }
-
-document.addEventListener('DOMContentLoaded', function(){
-    drawBoard();
-});
 
 export { drawBoard };
