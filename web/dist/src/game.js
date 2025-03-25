@@ -1,5 +1,5 @@
 import { drawBoard } from "./board.js";
 
 document.addEventListener('DOMContentLoaded', function() {
-    drawBoard();
+    drawBoard(800, 800);
 });
