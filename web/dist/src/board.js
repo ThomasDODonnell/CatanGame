@@ -64,9 +64,9 @@ function getHexCenters(r){
 
     //Leftmost
     let leftmost = []
-    for(let i=1; i < 3; i++){
+    for(let i=1; i < 4; i++){
         let y = (i + 1) * y_offset + ((2*i) + 1) * r;
-        let x = (0 + 1) * x_offset + ((2*i) + 1) * r;
+        let x = (0 + 1) * x_offset + r;
         leftmost.push([x, y]);
     }
 
@@ -103,7 +103,7 @@ function drawBoard(height, width){
         let verticies = getHexVerticies(r);
         let hex = drawHex(verticies);
         // let center_str = `${centers[i][0]}, ${centers[i][1]}`
-        hex.setAttribute("transform", `translate(${centers[i][0]}, ${centers[i][1]}) rotate(60)`)
+        hex.setAttribute("transform", `translate(${centers[i][0]}, ${centers[i][1]}) rotate(30)`)
         mother_svg.appendChild(hex);
     }
 
