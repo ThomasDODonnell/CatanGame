@@ -34,11 +34,13 @@ function drawHex(verticies){
 function getHexSize(height, width){
     let r;
     if(height <= width){
-        r = height/10;
+        r = (height*10)/106;
     }
     else{
-        r = width/10;
+        r = (width*10)/106;
     }
+    
+    console.log(`R: ${r}`)
 
     return r;
 }
@@ -63,14 +65,24 @@ function getHexCenters(r){
     }
 
     //Leftmost
-    let leftmost = []
+    let first = [];
     for(let i=1; i < 4; i++){
         let y = (i + 1) * y_offset + ((2*i) + 1) * r;
-        let x = (0 + 1) * x_offset + r;
-        leftmost.push([x, y]);
+        let x = y_offset + r;
+        first.push([x, y]);
     }
 
-    return leftmost;
+    let second = []; 
+    for(let i=0; i < 4 ; i++){
+        let y = (i + 1) * y_offset + ((2*i) + 1) * r + r + y_offset; // one more r and y offset
+        let x = (2 * y_offset) + (3 * r);
+        second.push([x, y]);
+    }
+
+    let all = [];
+    all.push(...first, ...second);
+
+    return all;
 
 }
 
