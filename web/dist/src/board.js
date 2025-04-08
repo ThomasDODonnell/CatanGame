@@ -48,7 +48,7 @@ function getHexSize(height, width){
 function getHexCenters(r){
     // const center = [width/2, height/2];
     let y_offset = r/10;
-    let x_offset = r * Math.tan(Math.PI/6)
+    let x_offset = Math.sqrt((3 * (y_offset ** 2))/4);
 
     let centers = [];
     
@@ -68,19 +68,41 @@ function getHexCenters(r){
     let first = [];
     for(let i=1; i < 4; i++){
         let y = (i + 1) * y_offset + ((2*i) + 1) * r;
-        let x = y_offset + r;
+        let x = x_offset + r;
         first.push([x, y]);
     }
 
     let second = []; 
-    for(let i=0; i < 4 ; i++){
+    for(let i = 0; i < 4 ; i++){
         let y = (i + 1) * y_offset + ((2*i) + 1) * r + r + y_offset; // one more r and y offset
-        let x = (2 * y_offset) + (3 * r);
+        let x = (2 * x_offset) + (3 * r);
         second.push([x, y]);
     }
 
+    let third = [];
+    for(let i = 0; i < 5; i++){
+        let y = (i + 1) * y_offset +((2*i) + 1) * r; 
+        let x = (3 * x_offset) + (5 * r);
+        third.push([x, y])
+    }
+
+    let fourth = []; 
+    for(let i = 0; i < 4 ; i++){
+        let y = (i + 1) * y_offset + ((2*i) + 1) * r + r + y_offset; // one more r and y offset
+        let x = (4 * x_offset) + (7 * r);
+        fourth.push([x, y]);
+    }
+
+    let fifth = [];
+    for(let i=1; i < 4; i++){
+        let y = (i + 1) * y_offset + ((2*i) + 1) * r;
+        let x = (5 * x_offset) + (9 * r);
+        fifth.push([x, y]);
+    }
+
+
     let all = [];
-    all.push(...first, ...second);
+    all.push(...first, ...second, ...third, ...fourth, ...fifth);
 
     return all;
 
