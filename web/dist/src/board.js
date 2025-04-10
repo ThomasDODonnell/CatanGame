@@ -52,51 +52,39 @@ function getHexCenters(r){
 
     let centers = [];
     
-    //middle virtical row
-    for(let i = 0; i < 6; i++){
-        let center = (i + 1) * y_offset + ((2*i) + 1) * r;
-        centers.push([center, center]);
-    }
-
-    //middle horizontal row
-    for(let i = 0; i < 5; i++){
-        let center = (i + 1) * x_offset + ((2*i) + 1) * r;
-        centers.push([center, center]);
-    }
-
     //Leftmost
     let first = [];
     for(let i=1; i < 4; i++){
-        let y = (i + 1) * y_offset + ((2*i) + 1) * r;
-        let x = x_offset + r;
+        let y = (i + 1) * (Math.sqrt(3) * r);
+        let x = (3/2) * r;
         first.push([x, y]);
     }
 
     let second = []; 
     for(let i = 0; i < 4 ; i++){
-        let y = (i + 1) * y_offset + ((2*i) + 1) * r + r + y_offset; // one more r and y offset
-        let x = (2 * x_offset) + (3 * r);
+        let y = (i+1) * (Math.sqrt(3) * r) + ((Math.sqrt(3) * r)/2);
+        let x = 2 * (3/2) * r;
         second.push([x, y]);
     }
 
     let third = [];
     for(let i = 0; i < 5; i++){
-        let y = (i + 1) * y_offset +((2*i) + 1) * r; 
-        let x = (3 * x_offset) + (5 * r);
+        let y = ((2*i) + 1) * r; 
+        let x = (5 * r);
         third.push([x, y])
     }
 
     let fourth = []; 
     for(let i = 0; i < 4 ; i++){
-        let y = (i + 1) * y_offset + ((2*i) + 1) * r + r + y_offset; // one more r and y offset
-        let x = (4 * x_offset) + (7 * r);
+        let y = ((2*i) + 1) * r + r; 
+        let x = (7 * r);
         fourth.push([x, y]);
     }
 
-    let fifth = [];
+    let fifth = []
     for(let i=1; i < 4; i++){
-        let y = (i + 1) * y_offset + ((2*i) + 1) * r;
-        let x = (5 * x_offset) + (9 * r);
+        let y = ((2*i) + 1) * r;
+        let x = (9 * r);
         fifth.push([x, y]);
     }
 
