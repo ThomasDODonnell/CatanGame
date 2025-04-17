@@ -34,10 +34,10 @@ function drawHex(verticies){
 function getHexSize(height, width){
     let r;
     if(height <= width){
-        r = (height*10)/106;
+        r = (height/10) * .1;
     }
     else{
-        r = (width*10)/106;
+        r = (width/10) * .1;
     }
     
     console.log(`R: ${r}`)
@@ -113,30 +113,14 @@ function drawBoard(height, width){
     mother_svg.setAttribute("width", `${width}`);
     mother_svg.setAttribute("height", `${height}`);
     mother_svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
-    // document.body.appendChild(mother_svg);
 
+
+    // insert the mother svg into the DOM
     const container = document.getElementById('board-container');
     container.appendChild(mother_svg);
 
     let r = getHexSize(height, width);
-    let centers = getHexCenters(r);
-    // drawAllHexes(r, centers, mother_svg);
-    for(let i=0; i < centers.length; i++){
-        let verticies = getHexVerticies(r);
-        let hex = drawHex(verticies);
-        // let center_str = `${centers[i][0]}, ${centers[i][1]}`
-        hex.setAttribute("transform", `translate(${centers[i][0]}, ${centers[i][1]}) rotate(30)`)
-        mother_svg.appendChild(hex);
-    }
-
-
-    // let hex_verticies = getHexVerticies(r);
-    // let hex = drawHex(hex_verticies);
-
-    //position the hex
-    // hex.setAttribute("transform", "translate(300, 300)");
-
-    // mother_svg.appendChild(hex);
+    
 
 }
 
